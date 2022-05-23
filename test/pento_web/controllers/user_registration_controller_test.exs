@@ -33,7 +33,9 @@ defmodule PentoWeb.UserRegistrationControllerTest do
 
       # Now do a logged in request and assert on the menu
       conn = get(conn, "/")
-      assert html_response(conn, 302) =~ "<html><body>You are being <a href=\"/guess\">redirected</a>.</body></html>"
+
+      assert html_response(conn, 302) =~
+               "<html><body>You are being <a href=\"/guess\">redirected</a>.</body></html>"
     end
 
     test "render errors for invalid data", %{conn: conn} do
