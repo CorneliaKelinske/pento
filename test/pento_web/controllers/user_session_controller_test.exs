@@ -34,7 +34,9 @@ defmodule PentoWeb.UserSessionControllerTest do
 
       # Now do a logged in request and assert on the menu
       conn = get(conn, "/")
-      assert html_response(conn, 302) =~ "<html><body>You are being <a href=\"/guess\">redirected</a>.</body></html>"
+
+      assert html_response(conn, 302) =~
+               "<html><body>You are being <a href=\"/guess\">redirected</a>.</body></html>"
     end
 
     test "logs the user in with remember me", %{conn: conn, user: user} do
