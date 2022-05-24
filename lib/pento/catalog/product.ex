@@ -1,6 +1,7 @@
 defmodule Pento.Catalog.Product do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Pento.Catalog.Product
 
   schema "products" do
     field :description, :string
@@ -19,4 +20,12 @@ defmodule Pento.Catalog.Product do
     |> unique_constraint(:sku)
     |> validate_number(:unit_price, greater_than: 0.0)
   end
+
+  def markdown_changeset(%Product{unit_price: old_price} = product, attrs) do
+    product
+    |> cast(attrs, [:unit_price])
+    |> validate_required(:unit_price)
+    |> validate_number(:unit_price, less_than: old_price)
+    end
+
 end
