@@ -2,19 +2,11 @@
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.product_show_path(@socket, :show, @product)}>
-    <.live_component
-      module={PentoWeb.ProductLive.FormComponent}
-      id={@product.id}
-      title={@page_title}
-      action={@live_action}
-      product={@product}
-      return_to={Routes.product_show_path(@socket, :show, @product)}
-    />
+    <.live_component module={PentoWeb.ProductLive.FormComponent} id={@product.id} title={@page_title} action={@live_action} product={@product} return_to={Routes.product_show_path(@socket, :show, @product)} />
   </.modal>
 <% end %>
 
 <ul>
-
   <li>
     <strong>Name:</strong>
     <%= @product.name %>
@@ -34,8 +26,6 @@
     <strong>Sku:</strong>
     <%= @product.sku %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.product_show_path(@socket, :edit, @product), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.product_index_path(@socket, :index) %></span>
+<span><%= live_patch("Edit", to: Routes.product_show_path(@socket, :edit, @product), class: "button") %></span> | <span><%= live_redirect("Back", to: Routes.product_index_path(@socket, :index)) %></span>
