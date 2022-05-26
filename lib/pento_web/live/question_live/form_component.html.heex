@@ -7,22 +7,20 @@
     id="question-form"
     phx-target={@myself}
     phx-change="validate"
-    phx-submit="save">
-  
-    <%= label f, :question %>
-    <%= text_input f, :question %>
-    <%= error_tag f, :question %>
-  
-    <%= label f, :answer %>
-    <%= text_input f, :answer %>
-    <%= error_tag f, :answer %>
-  
-    <%= label f, :votes %>
-    <%= number_input f, :votes %>
-    <%= error_tag f, :votes %>
-  
+    phx-submit="save"
+  >
+    <%= label(f, :question) %>
+    <%= text_input(f, :question) %>
+    <%= error_tag(f, :question) %>
+
+    <%= label(f, :answer) %>
+    <%= text_input(f, :answer) %>
+    <%= error_tag(f, :answer) %>
+
+    <%= hidden_input(f, :votes, value: 0) %>
+
     <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
+      <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>
   </.form>
 </div>

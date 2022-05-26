@@ -52,4 +52,8 @@ defmodule PentoWeb.QuestionLive.FormComponent do
         {:noreply, assign(socket, changeset: changeset)}
     end
   end
+
+  def a_function do()
+"adsfsadfsadfsadfas"
+  end
 end

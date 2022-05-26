@@ -49,7 +49,8 @@ defmodule Pento.Faq do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_question(attrs \\ %{}) do
+  def create_question(attrs \\ %{"votes" => 0}) do
+
     %Question{}
     |> Question.changeset(attrs)
     |> Repo.insert()

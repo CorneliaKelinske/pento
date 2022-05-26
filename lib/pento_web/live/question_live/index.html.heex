@@ -28,16 +28,30 @@
       <tr id={"question-#{question.id}"}>
         <td><%= question.question %></td>
         <td><%= question.answer %></td>
-        <td><%= question.votes %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.question_show_path(@socket, :show, question) %></span>
-          <span><%= live_patch "Edit", to: Routes.question_index_path(@socket, :edit, question) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: question.id, data: [confirm: "Are you sure?"] %></span>
+          <button phx-click="vote" phx-value-id={question.id}>Vote</button><%= question.votes %>
+        </td>
+
+        <td>
+          <span>
+            <%= live_redirect("Show", to: Routes.question_show_path(@socket, :show, question)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit", to: Routes.question_index_path(@socket, :edit, question)) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: question.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Question", to: Routes.question_index_path(@socket, :new) %></span>
+<span><%= live_patch("New Question", to: Routes.question_index_path(@socket, :new)) %></span>

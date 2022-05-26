@@ -40,6 +40,13 @@ defmodule PentoWeb.QuestionLive.Index do
     {:noreply, assign(socket, :questions, list_questions())}
   end
 
+  def handle_event("vote", %{"id" => id}, socket) do
+    question = Faq.get_question!(id)
+    {:ok, _question} = Faq.update_question(question, %{"votes" => question.votes + 1})
+
+    {:noreply, assign(socket, :questions, list_questions())}
+  end
+
   defp list_questions do
     Faq.list_questions()
   end
