@@ -23,7 +23,7 @@ defmodule PentoWeb.PromoLive do
     "validate",
     %{"recipient" => recipient_params},
     %{assigns: %{recipient: recipient}} = socket) do
-   
+
       changeset =
         recipient
         |> Promo.change_recipient(recipient_params)
@@ -32,6 +32,11 @@ defmodule PentoWeb.PromoLive do
        {:noreply,
       socket
       |> assign(:changeset, changeset)}
+    end
+
+    def handle_event("save", %{"recipient" => recipient_params}, socket) do
+      :timer.sleep(1000)
+      #...
     end
 
 
