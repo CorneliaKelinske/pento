@@ -27,4 +27,17 @@
       <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>
   </.form>
+
+
+<%= for entry <- @uploads.image.entries do %>
+  <p>
+    <%= entry.client_name %> - <%= entry.progress %>%
+    
+     <button phx-target="{ @myself }"
+     phx-click="cancel-upload" phx-value-ref="{ entry.ref }">cancel</button>
+  </p>
+<% end %>
+<p class="alert alert-info" role="alert"
+    phx-click="lv:clear-flash"
+    phx-value-key="info"><%= live_flash(@flash, :info) %></p>
 </div>
