@@ -23,7 +23,6 @@ defmodule PentoWeb.PromoLive do
     "validate",
     %{"recipient" => recipient_params},
     %{assigns: %{recipient: recipient}} = socket) do
-
       changeset =
         recipient
         |> Promo.change_recipient(recipient_params)

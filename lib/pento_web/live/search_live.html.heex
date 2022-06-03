@@ -1,0 +1,15 @@
+<h2>Product Search</h2>
+<h4>
+  Enter a 7 digit SKU to find a product from our catalog
+</h4>
+<div>
+  <.form let={f} for={@changeset} id="search-form" phx-change="validate" phx-submit="save">
+    <%= label(f, :sku, "SKU") %>
+    <%= text_input(f, :sku) %>
+    <%= error_tag(f, :sku) %>
+
+  
+
+    <%= submit("Search", phx_disabled_with: "Searching...") %>
+  </.form>
+</div>

@@ -6,7 +6,7 @@ defmodule Pento.Catalog do
   import Ecto.Query, warn: false
   alias Pento.Repo
 
-  alias Pento.Catalog.Product
+  alias Pento.Catalog.{Product, Search}
 
   @doc """
   Returns the list of products.
@@ -36,6 +36,10 @@ defmodule Pento.Catalog do
 
   """
   def get_product!(id), do: Repo.get!(Product, id)
+
+  def get_product_by_sku!(sku) do
+    Repo.get_by!(Product, sku: sku)
+  end
 
   @doc """
   Creates a product.
@@ -107,4 +111,9 @@ defmodule Pento.Catalog do
    |> Product.markdown_changeset(%{unit_price: new_unit_price})
    |> Repo.update()
   end
+
+  def change_search(%Search{} = search, attrs \\ %{}) do
+    Search.changeset(search, attrs)
+  end
+
 end
