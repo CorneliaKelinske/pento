@@ -18,9 +18,8 @@
     <%= number_input(f, :sku) %>
     <%= error_tag(f, :sku) %>
 
-   
-    <div phx-drop-target= {@uploads.image.ref}>
-       <%= live_file_input @uploads.image %>
+    <div phx-drop-target={@uploads.image.ref}>
+      <%= live_file_input(@uploads.image) %>
     </div>
 
     <div>
@@ -28,16 +27,10 @@
     </div>
   </.form>
 
-
-<%= for entry <- @uploads.image.entries do %>
-  <p>
-    <%= entry.client_name %> - <%= entry.progress %>%
-    
-     <button phx-target="{ @myself }"
-     phx-click="cancel-upload" phx-value-ref="{ entry.ref }">cancel</button>
-  </p>
-<% end %>
-<p class="alert alert-info" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+  <%= for entry <- @uploads.image.entries do %>
+    <p>
+      <%= entry.client_name %> - <%= entry.progress %>% <button phx-target="{ @myself }" phx-click="cancel-upload" phx-value-ref="{ entry.ref }">cancel</button>
+    </p>
+  <% end %>
+  <p class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info"><%= live_flash(@flash, :info) %></p>
 </div>
