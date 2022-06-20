@@ -2,7 +2,10 @@
   <h1>Survey</h1>
 </section>
 
-<Component.hero content= "Hello from a Function Component">
-<div>Hello from a Function Component's slot</div>
-</Component.hero>
+<%= if @demographic do %>
+<DemographicLive.Show.details demographic={@demographic} />
+<% else %>
+<h2>Demographic Form coming soon! </h2>
+<% end %> 
+
 
